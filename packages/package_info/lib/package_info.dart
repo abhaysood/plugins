@@ -62,4 +62,21 @@ class PackageInfo {
 
   /// The build number. `CFBundleVersion` on iOS, `versionCode` on Android.
   final String buildNumber;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is PackageInfo &&
+          runtimeType == other.runtimeType &&
+          appName == other.appName &&
+          packageName == other.packageName &&
+          version == other.version &&
+          buildNumber == other.buildNumber;
+
+  @override
+  int get hashCode =>
+      appName.hashCode ^
+      packageName.hashCode ^
+      version.hashCode ^
+      buildNumber.hashCode;
 }
